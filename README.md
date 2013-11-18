@@ -26,6 +26,13 @@ mclean ship 717d8a7d5593 production # Ship container 717d8a7d5593 to production
 
 McLean integrates seamlessly with StriderCD - for bit-for-bit deployment of tested code, use the strider-mclean plugin to deploy your containers. (VAPORWARE!)
 
+
+
+## Technology
+
+McLean is written with a polyglut of technologies. Node.js is the glue that ties together fabric, docker, puppet, go, shell scripts, vagrant, and a whole lot more. DevOps is messy business.
+
+
 ## Why "McLean"
 
 Shipping Containers were invented in 1956 by Malcolm McLean. McLean ships containers.
