@@ -15,7 +15,25 @@ npm install mclean
 mclean destination add production ec2 # Add a deployment environment
 
 mclean ship 717d8a7d5593 production # Ship container 717d8a7d5593 to production
+
+# Or
+
+mclean ship ./mycode staging # Upload mycode, build container from Dockerfile, deploy
+
 ```
+
+### `mclean destination`
+
+
+### `mclean ship`
+
+The Ship command is used to deploy containers to a destination environment. It can either take a container id from a container on the local machine, or
+a path to a directory in which a Dockerfile specifies how to build a container with that code.
+
+
+
+
+
 
 
 ## Hosting providers
