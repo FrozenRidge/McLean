@@ -27,3 +27,9 @@ module.exports.show = function(env){
     throw "No destination '" + env + "'"
   }
 }
+
+
+module.exports.load = function(dest){
+  var df = JSON.parse(fs.readFileSync(PATH, 'utf8'))
+  return df[dest]
+}
