@@ -1,4 +1,4 @@
-from fabric.api import env, local
+from fabric.api import env, local, task
 
 
 if env.get('vagrant'):
