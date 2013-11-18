@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+    "postinstall" : "virtualenv-postinstall"
   },
   "repository": {
     "type": "git",
@@ -14,5 +15,8 @@
   "license": "BSD",
   "bugs": {
     "url": "https://github.com/Strider-CD/McLean/issues"
+  },
+  "dependencies": {
+    "virtualenv": "~0.2.1"
   }
 }

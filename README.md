@@ -20,6 +20,10 @@ mclean ship 717d8a7d5593 production # Ship container 717d8a7d5593 to production
 
 ## Hosting providers
 
+### Vagrant
+McLean supports a local Vagrant environment for development.
+
+
 
 
 ## Strider Integration
