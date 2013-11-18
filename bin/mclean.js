@@ -1,13 +1,16 @@
 #!/usr/bin/env node
 
-var nomnom = require("nomnom")
+var parser = require("nomnom")
 
 
-if (process.argv.indexOf("destination add") >=0){
-  require('./destination.js')
-else {
-  console.log(USAGE)
-}
+parser.command('destination')
+   .callback(require('./destination'))
+
+
+parser.command('ship')
+  .callback(require('./ship'))
+
+parser.parse()
 
 
 
