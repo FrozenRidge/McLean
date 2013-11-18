@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
-var USAGE = "McLean"
+var nomnom = require("nomnom")
+
 
 if (process.argv.indexOf("destination add") >=0){
   require('./destination.js')
