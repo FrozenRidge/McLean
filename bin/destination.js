@@ -1,24 +1,7 @@
 // DESTINATION
 var fs = require('fs')
-  , PATH = process.env.HOME + "/.mclean"
-
-
-var store = function(name, typ){
-  return function(err, serialised){
-    if (err) throw err
-
-    var dotfile = {}
-    try {
-      JSON.parse(fs.readFileSync(PATH, 'utf8'))
-    } catch(e){
-      console.error("Couldn't open ~/.mclean - creating a new file")
-    }
-    dotfile[name] = {provider: typ, opts: serialised}
-    //console.log(dotfile)
-    fs.writeFileSync(PATH, JSON.stringify(dotfile))
-  }
-}
-
+  , store = require('./dotfile').store
+  , show = require('./dotfile').show
 
 var add = function(name, opts){
   var provider;
@@ -47,13 +30,11 @@ module.exports = function(opts){
   }
 
   if (opts._[1] == 'show'){
-    var df = JSON.parse(fs.readFileSync(PATH, 'utf8'))
-      , env = opts._[2]
-    if (df[env]){
-      console.log("Destination", env, "(" + df[env].provider + ") :", df[env].opts)
-      return;
-    } else {
-      console.error("No destination '", env, "'")
+    var env = opts._[2]
+    try{ 
+      return show(env)
+    } catch (e){
+      console.log(e)
     }
   }
 
