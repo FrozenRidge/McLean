@@ -8,6 +8,24 @@ npm install mclean
 ```
 
 
+## Usage
+
+```sh
+
+mclean destination add production ec2 # Add a deployment environment
+
+mclean ship 717d8a7d5593 production # Ship container 717d8a7d5593 to production
+```
+
+
+## Hosting providers
+
+
+
+## Strider Integration
+
+McLean integrates seamlessly with StriderCD - for bit-for-bit deployment of tested code, use the strider-mclean plugin to deploy your containers. (VAPORWARE!)
+
 ## Why "McLean"
 
 Shipping Containers were invented in 1956 by Malcolm McLean. McLean ships containers.
