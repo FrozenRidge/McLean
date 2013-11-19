@@ -16,18 +16,16 @@ npm install mclean
 
 mclean destination add production vagrant # Add a deployment environment
 
-mclean ship ./mycode staging foo # Upload mycode, build container from Dockerfile, deploy to foo.mydomain.com
+mclean provision staging # Spin up staging destination and install mclean dependencies.
 
-# TODO mclean ship 717d8a7d5593 production # Ship container 717d8a7d5593 to production
-
+mclean ship ./mycode staging ./manifest.json # run mycode on staging. Manifest specifies port etc.
 ```
 
 ### `mclean destination`
 
 ```sh
 mclean destination add foo vagrant # Add a vagrant environment called foo
-
-#TODO mclean destination add --port 80 --subdomain foo production ec2 # Add a vagrant environment that defaults to deploying foo at port 80
+mclean destination show foo
 ```
 
 Add a destination for shipped code. There are various types of destination provider - see [the hosting providers section](#Hosting_Providers) for details on each.
