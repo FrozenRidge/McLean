@@ -1,5 +1,7 @@
 # McLean - Ship Containers.
 
+ATTENTION: This is a work in progress. It's not functional and shouldn't be used yet. Feel free to help out on the hacking though :)
+
 
 ## Install
 
