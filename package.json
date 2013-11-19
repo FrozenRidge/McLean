@@ -9,7 +9,7 @@
   },
   "bin": {
     "mclean" : "bin/mclean"
-  }
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/Strider-CD/McLean.git"
