@@ -24,6 +24,12 @@ mclean ship ./mycode staging foo # Upload mycode, build container from Dockerfil
 
 ### `mclean destination`
 
+```sh
+mclean destination add foo vagrant # Add a vagrant environment called foo
+
+#TODO mclean destination add --port 80 --subdomain foo production ec2 # Add a vagrant environment that defaults to deploying foo at port 80
+```
+
 Add a destination for shipped code. There are various types of destination provider - see [the hosting providers section](#Hosting_Providers) for details on each.
 
 
