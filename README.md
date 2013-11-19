@@ -24,6 +24,9 @@ mclean ship ./mycode staging foo # Upload mycode, build container from Dockerfil
 
 ### `mclean destination`
 
+Add a destination for shipped code. There are various types of destination provider - see [the hosting providers section](#Hosting_Providers) for details on each.
+
+
 
 ### `mclean ship`
 
@@ -40,6 +43,11 @@ a path to a directory in which a Dockerfile specifies how to build a container w
 
 ### Vagrant
 McLean supports a local Vagrant environment for development.
+
+
+
+
+
 
 
 
