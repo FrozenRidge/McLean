@@ -1,4 +1,4 @@
-from fabric.api import env, local, task, put, sudo, run, env, cd
+from fabric.api import env, local, task, put, sudo, run, env, cd, execute
 
 
 if env.get('vagrant'):
@@ -30,6 +30,19 @@ def ship_source():
   with cd("/tmp/mclean-build"):
     sudo("docker build -t mclean-build/" + env.target + " .")
 
+  execute(update_container, env.target)
+
+
+
+@task
+def update_container(target):
+  '''update container: target'''
+  # TODO make better
+  sudo('mkdir -p /tmp/mclean-remote')
+  put('./lib/update_container.js', '/tmp/mclean-remote', use_sudo=True)
+  with cd("/tmp/mclean-remote"):
+    sudo('npm install async optimist docker.io redis')
+    sudo('node update_container.js mclean-build/' + target)
 
 
 
