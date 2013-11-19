@@ -42,7 +42,7 @@ def update_container(target):
   '''update container: target'''
   # TODO make better
   sudo('mkdir -p /tmp/mclean-remote')
-  put('./lib/update_container.js', '/tmp/mclean-remote', use_sudo=True)
+  put('./mclean-remote/update_container.js', '/tmp/mclean-remote', use_sudo=True)
   with cd("/tmp/mclean-remote"):
     sudo('npm install async optimist docker.io redis')
     sudo('node update_container.js mclean-build/' + target)
