@@ -14,13 +14,11 @@ npm install mclean
 
 ```sh
 
-mclean destination add production ec2 # Add a deployment environment
+mclean destination add production vagrant # Add a deployment environment
 
-mclean ship 717d8a7d5593 production # Ship container 717d8a7d5593 to production
+mclean ship ./mycode staging foo # Upload mycode, build container from Dockerfile, deploy to foo.mydomain.com
 
-# Or
-
-mclean ship ./mycode staging # Upload mycode, build container from Dockerfile, deploy
+# TODO mclean ship 717d8a7d5593 production # Ship container 717d8a7d5593 to production
 
 ```
 

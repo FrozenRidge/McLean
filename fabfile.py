@@ -28,4 +28,8 @@ def ship_source():
   sudo("mkdir /tmp/mclean-build ; tar xfz /tmp/mclean-build.tar.gz -C /tmp/mclean-build")
   sudo("ls /tmp/mclean-build")
   with cd("/tmp/mclean-build"):
-    sudo("docker build -t mclean-build/unnamed .")
+    sudo("docker build -t mclean-build/" + env.target + " .")
+
+
+
+
