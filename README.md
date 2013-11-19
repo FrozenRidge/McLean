@@ -1,4 +1,4 @@
-# McLean - Ship Containers. [status: vaporware]
+# McLean - Ship Containers.
 
 
 ## Install
