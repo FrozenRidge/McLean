@@ -1,4 +1,6 @@
 var load = require('./dotfile').load
+  , path = require('path')
+  , fs = require('fs')
 
 module.exports = function(opts){
   var usage = "usage: mclean ship [opts] <container id | path> <destination environment>"
@@ -16,6 +18,28 @@ module.exports = function(opts){
     process.exit(1)
   }
 
-  console.log("!!", target, destination)
+  var src = path.resolve(target)
+    , handled = false
 
+  try{
+    if (fs.statSync(src).isDirectory()){
+      handled = true
+      shipSrc(src, opts._[2], destination)
+    }
+  } catch (e){
+    // TODO - handle container
+    console.log(e)
+  }
+
+
+  if (!handled){
+    console.error(target, "is not a directory or a container ID - don't know how to ship...")
+    process.exit(1)
+  }
+}
+
+
+var shipSrc = function(source, destination, target){
+  console.log("Shipping:" , source, " to ", destination, target)
+  require('../lib/ship_code')(source, destination, target)
 }
