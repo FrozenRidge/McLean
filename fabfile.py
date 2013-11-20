@@ -18,8 +18,12 @@ def vagrant():
     result = local('(cd providers/vagrant  && vagrant ssh-config | grep IdentityFile)', capture=True)
     env.key_filename = result.split()[1].strip('\"')
 
-#    with cd("/srv/dev-puppet"):
-#      sudo("puppet apply -d --modulepath=modules manifests/site.pp")
+
+
+@task
+def provision():
+  with cd("/srv/dev-puppet"):
+    sudo("puppet apply -d --modulepath=modules manifests/site.pp")
 
 
 @task
