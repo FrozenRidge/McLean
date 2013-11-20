@@ -21,6 +21,8 @@
   },
   "dependencies": {
     "virtualenv": "~0.2.1",
-    "nomnom": "~1.6.2"
+    "nomnom": "~1.6.2",
+    "pkgcloud": "~0.8.14",
+    "async": "~0.2.9"
   }
 }

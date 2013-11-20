@@ -1,0 +1,69 @@
+var pkgcloud = require('pkgcloud')
+  , readline = require('readline')
+
+
+var createClient = function(username, keyid, keypath, cb){
+  var client = pkgcloud.compute.createClient({
+    provider: 'joyent'
+  , account: username
+  , keyId: keyId
+  , key: fs.readFileSync(key_path, 'ascii')
+  })
+}
+
+
+var readOpts = function(opts, cb){
+  var rl = readline.createInterface({
+      input: process.stdin,
+      output: process.stdout
+  });
+
+  var out = {}
+
+
+}
+
+var createOptTask = function(key, help, opts, res, cb){
+  if (opts[key]){
+    res[key] = opts[key]
+    cb(null)
+  } else {
+    r.question("[--" + key + "] " + help, function(answer){ 
+      res[key] = answer
+      cb(null)
+    })
+  }
+}
+
+
+var createPkgCloudProvider = function(provider, addParams){
+  return {
+    add: function (opts, done){
+      var out = {}, tasks = [];
+
+      addParams.forEach(function(a){
+        tasks.push(function(cb){
+          createOptTask(a[0], a[1], opts, out, cb);
+        })
+      })
+
+      async.series(tasks, function(err){
+        done(err, out);
+      })
+    }
+
+  }
+}
+
+
+
+module.exports = createPkgCloudProvider(
+  "joyent"
+, [
+    ["username", "Your Joyent username"]
+  , ["keyId", "The ID of your Joyent Key"]
+  , ["key", "The path to your Joyent Key"]
+  , ["servername", "The name of the instance"]
+  ]
+)
+

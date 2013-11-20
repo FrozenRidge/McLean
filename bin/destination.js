@@ -23,8 +23,7 @@ module.exports = function(opts){
       process.exit(0)
     })
   }
-
-  if (opts._[1] == 'show'){
+  else if (opts._[1] == 'show'){
     var env = opts._[2]
     try{ 
       return show(env)
@@ -32,10 +31,11 @@ module.exports = function(opts){
       console.log(e)
     }
   }
+  else {
 
-
-  console.log(USAGE)
-  console.log(opts._)
-  process.exit(1)
+    console.log(USAGE)
+    console.log(opts._)
+    process.exit(1)
+  }
 
  }
