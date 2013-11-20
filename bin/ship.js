@@ -1,5 +1,4 @@
-var load = require('./dotfile').load
-  , path = require('path')
+var  path = require('path')
   , fs = require('fs')
 
 module.exports = function(opts){

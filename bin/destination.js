@@ -1,8 +1,6 @@
 // DESTINATION
-var fs = require('fs')
-  , store = require('./dotfile').store
-  , show = require('./dotfile').show
-  , add = require('../lib').add
+var add = require('../lib').destinationAdd
+  , show = require('../lib').destinationShow
 
 
 module.exports = function(opts){
@@ -14,12 +12,12 @@ module.exports = function(opts){
     process.exit(1)
   }
 
-  if (opts._[1] == 'add' && opts._.length < 4) {
+  if (opts._[1] == 'add' && opts._.length >= 4) {
 
     add(opts._[2], opts._[3], opts, function(err){
       if (err){
-        process.stderr.write(err.msg);
-        process.sderr.write(USAGE)
+        console.error(err.msg || err);
+        console.error(USAGE)
         process.exit(1)
       }
       process.exit(0)
@@ -37,6 +35,7 @@ module.exports = function(opts){
 
 
   console.log(USAGE)
+  console.log(opts._)
   process.exit(1)
 
  }
