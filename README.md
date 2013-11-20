@@ -37,6 +37,7 @@ Add a destination for shipped code. There are various types of destination provi
 The Ship command is used to deploy containers to a destination environment. It can either take a container id from a container on the local machine, or
 a path to a directory in which a Dockerfile specifies how to build a container with that code.
 
+Ship takes a path to a manifest file, or can read one from stdin. The manifest file is simply a JSON file that specifies a name for the service and a port or subdomain to run it on on the destination. Because it's just a json file, you can use a package.json for example. In fact, if you omit the manifest.json, we'll look for a package.json with the appropriate keys.
 
 
 
