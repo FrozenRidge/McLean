@@ -18,6 +18,8 @@ npm install mclean
 
 mclean server add staging joyent --account frozenridge --servername staging --flavor "Large 8GB"
 mclean server add dev vagrant
+mclean server add foo 192.168.0.5                           # Add by IP
+mclean server add bar bar.example.com                       # Or with a domain
 mclean server ls
 mclean server show staging
 
