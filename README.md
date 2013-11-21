@@ -31,6 +31,7 @@ mclean ship ./mycode staging ./manifest.json                # run mycode on stag
 mclean ship . staging                                       # assuming package.json or manifest.json in .
 mclean ship git@github.com:Me/Myproject.git staging         # ship a project from github to server
 mclean ship . staging --name myservice-01                   # ship to staging and name container myservice-01
+mclean ship . <pool>                                        # ship a container to each server in a pool
 
 mclean container ls                                         # List all containers (Show routing information)
 mclean container ls <server..>                              # List containers on server
