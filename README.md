@@ -11,33 +11,78 @@ npm install mclean
 
 
 ## Usage
+## Vaporware (API play)
 
 ```sh
 
-mclean destination add production vagrant # Add a deployment environment
 
-mclean provision staging # Spin up staging destination and install mclean dependencies.
+mclean server add staging joyent --account frozenridge --servername staging --flavor "Large 8GB"
+mclean server add dev vagrant
+mclean server ls
+mclean server show staging
 
-mclean ship ./mycode staging ./manifest.json # run mycode on staging. Manifest specifies port etc.
+mclean pool create <poolname> <servername> <servername>
+
+mclean provision staging                                    # Spin up staging server and install mclean dependencies.
+
+mclean ship ./mycode staging ./manifest.json                # run mycode on staging. Manifest specifies port etc.
+mclean ship . staging                                       # assuming package.json or manifest.json in .
+mclean ship git@github.com:Me/Myproject.git staging         # ship a project from github to server
+mclean ship . staging --name myservice-01                   # ship to staging and name container myservice-01
+
+mclean container ls                                         # List all containers (Show routing information)
+mclean container ls <server..>                              # List containers on server
+mclean container ls <pool / datacenter / region..>          # List containers in a pool / datacenter / region
+mclean container ls --running
+mclean container show <server>/<container>
+
+
+mclean run <server>/<container> -c "ls"                     # Run 'ls' in container on server and pipe results back to stdout
+mclean run <server>/<container>                             # If container isn't running on server, run it
+mclean stop <server>/<container>
+
+
+mclean gc                                                   # Delete old images
+
+
+
+mclean nodejs init                                          # Generate Dockerfile and manifest in package.json for best-practise node deployment
+# Allowing:
+mclean nodejs init && mclean ship . production
+
+mclean topology show <datacenter>
+
 ```
 
-### `mclean destination`
+
+
+
+
+
+
+
+
+
+
+## Documentation
+
+### `mclean server`
 
 ```sh
-mclean destination add foo vagrant # Add a vagrant environment called foo
-mclean destination show foo
+mclean server add foo vagrant # Add a vagrant environment called foo
+mclean server show foo
 ```
 
-Add a destination for shipped code. There are various types of destination provider - see [the hosting providers section](#Hosting_Providers) for details on each.
+Add a server destination for shipped code. There are various types of provider - see [the hosting providers section](#Hosting_Providers) for details on each.
 
 
 
 ### `mclean ship`
 
-The Ship command is used to deploy containers to a destination environment. It can either take a container id from a container on the local machine, or
+The Ship command is used to deploy containers to a destination server. It can either take a container id from a container on the local machine, or
 a path to a directory in which a Dockerfile specifies how to build a container with that code.
 
-Ship takes a path to a manifest file, or can read one from stdin. The manifest file is simply a JSON file that specifies a name for the service and a port or subdomain to run it on on the destination. Because it's just a json file, you can use a package.json for example. In fact, if you omit the manifest.json, we'll look for a package.json with the appropriate keys.
+Ship takes a path to a manifest file, or can read one from stdin. The manifest file is simply a JSON file that specifies a name for the service and a port or subdomain to run it on on the server. Because it's just a json file, you can use a package.json for example. In fact, if you omit the manifest.json, we'll look for a package.json with the appropriate keys.
 
 
 
